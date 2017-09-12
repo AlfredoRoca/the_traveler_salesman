@@ -1,5 +1,5 @@
 require_relative 'utils.rb'
-require_relative 'fifo.rb'
+require_relative 'stop_set.rb'
 require_relative 'city.rb'
 require_relative 'node.rb'
 require_relative 'city_node.rb'

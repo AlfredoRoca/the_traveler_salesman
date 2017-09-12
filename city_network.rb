@@ -31,24 +31,24 @@ class CityNetwork < Graph
     # ~Dijkstra
     travel_route = Graph.new
     visited_stops = Array.new
-    fifo_stops = Fifo.new
+    stop_set = StopSet.new
     origin_graph_node = find_by_name(origin_city_name)
 
-    stop = TravelStop.new({city: origin_graph_node, distance: 0}) # distance to himself is zero
-    travel_route.add stop
-    fifo_stops.enqueue(stop)
+    new_stop = TravelStop.new({city: origin_graph_node, distance: 0}) # distance to himself is zero
+    travel_route.add new_stop
+    stop_set.put(new_stop)
 
     # set infinite distance to the rest of nodes
     nodes.each do |node|
       unless node == origin_graph_node
-        stop = TravelStop.new({city: node, distance: Float::INFINITY})
-        travel_route.add stop
-        fifo_stops.enqueue(stop)
+        new_stop = TravelStop.new({city: node, distance: Float::INFINITY})
+        travel_route.add new_stop
+        stop_set.put(new_stop)
       end
     end
 
-    while !fifo_stops.empty?
-      current_stop = fifo_stops.dequeue_min_distance
+    while !stop_set.empty?
+      current_stop = stop_set.get_min_distance
       visited_stops.push(current_stop.city_name)
       current_city = current_stop.city
       current_city.neighbours.each do |neighbour|

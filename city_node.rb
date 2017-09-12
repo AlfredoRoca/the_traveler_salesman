@@ -28,6 +28,7 @@ class CityNode < Node
 
     a = Math.sin(delta_lat / 2.0)**2 + Math.cos(lat1_in_rad) * Math.cos(lat2_in_rad) * Math.sin(delta_lon / 2.0)**2;
     distance = 2 * earth_radius * Math.asin(Math.sqrt(a));
+    distance
   end
 
   def to_s
