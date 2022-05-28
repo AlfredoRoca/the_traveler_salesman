@@ -1,3 +1,5 @@
+require 'set'
+
 class StopSet < Set
   attr_accessor :array
 

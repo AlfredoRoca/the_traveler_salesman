@@ -8,27 +8,23 @@ You are a successful salesman working for a big company. You have 32 big account
 
 The input file will contain a listing of cities and coordinates in a tab-delimited file. The filename is named exactly `cities.txt` is located on the same directory where the script is executed. There are no additional spaces or lines at the begging or end of the file.
 
-The schema for this file is as follows: 
+The schema for this file is as follows:
 
     <city name> \t <latitude> \t <longitude> \n
 
-An example input file: 
+An example input file:
 
     Beijing     39.93   116.40
     Vladivostok 43.8    131.54
     Dakar       14.40   -17.28
-    Singapore   1.14    103.55 
+    Singapore   1.14    103.55
      (...)
 
 **Installation**
 
-With RVM:
-
-Edit `.ruby-version` and change proper value (ruby version > 2.2 should work)
-
-    gem install bundler
+    docker build -t the_traveler_salesman .
+    docker run -it -v $PWD:/usr/src/app -w /usr/src/app the_traveler_salesman bash
     bundle install
-
 
 **Usage:**
 
@@ -134,7 +130,7 @@ Visit [Map Customizer](https://www.mapcustomizer.com/), create a new map and bul
 
 **Testing**
 
-Execute `rspec`
+Execute `rspec` or `rspec --format doc`
 
 **Technical**
 
